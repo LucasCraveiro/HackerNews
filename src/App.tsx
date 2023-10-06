@@ -8,15 +8,17 @@ function App() {
   useEffect(() => {
     fetch("https://hacker-news.firebaseio.com/v0/topstories.json")
       .then((response) => response.json())
-      .then((data) => setNewsIds(data.slice(0, 30)));
+      .then((data) => setNewsIds(data.slice(0, 50)));
   }, []);
 
   return (
     <>
-      <h1>Vite + React</h1>
-      {newsIds.map((newsID) => (
-        <SingleNews id={newsID} />
-      ))}
+      <h1>Hacker News</h1>
+      <div className="items-wrapper">
+        {newsIds.map((newsID) => (
+          <SingleNews id={newsID} key={newsID} />
+        ))}
+      </div>
     </>
   );
 }
